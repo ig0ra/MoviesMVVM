@@ -1,5 +1,5 @@
 // NetworkManager.swift
-// Copyright © RoadMap. All rights reserved.
+// Copyright © Roadmap. All rights reserved.
 
 import Foundation
 

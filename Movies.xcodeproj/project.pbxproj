@@ -82,13 +82,14 @@
 		8424375026AEE50C00147A18 /* Movies */ = {
 			isa = PBXGroup;
 			children = (
+				849C41112715E8CF005F8876 /* MoviesModule */,
 				84650CC426B3465D00A472F5 /* Core delegates */,
 				84650CC326B3464D00A472F5 /* Model */,
 				84650CC526B3467400A472F5 /* Controllers */,
 				84650CC726B346A200A472F5 /* Network */,
+				84650CC826B4456200A472F5 /* Recources */,
 				84650CC626B3468500A472F5 /* View */,
-				8424375A26AEE51100147A18 /* Assets.xcassets */,
-				8424375F26AEE51100147A18 /* Info.plist */,
+				849C410F2715E7B1005F8876 /* Environments */,
 				84650CBE26B345B700A472F5 /* Extensions */,
 			);
 			path = Movies;
@@ -133,7 +134,6 @@
 		84650CC626B3468500A472F5 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				84650CC826B4456200A472F5 /* Storyboards */,
 				84650CCE26B478F300A472F5 /* MovieCell */,
 				84650CCD26B46D4D00A472F5 /* PosterCell */,
 				84650CD326B4794C00A472F5 /* TitleCell */,
@@ -150,13 +150,14 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		84650CC826B4456200A472F5 /* Storyboards */ = {
+		84650CC826B4456200A472F5 /* Recources */ = {
 			isa = PBXGroup;
 			children = (
+				8424375A26AEE51100147A18 /* Assets.xcassets */,
 				8424375726AEE50C00147A18 /* Main.storyboard */,
 				8424375C26AEE51100147A18 /* LaunchScreen.storyboard */,
 			);
-			path = Storyboards;
+			path = Recources;
 			sourceTree = "<group>";
 		};
 		84650CCD26B46D4D00A472F5 /* PosterCell */ = {
@@ -192,6 +193,45 @@
 				84650CD526B4797400A472F5 /* DecsriptionTableViewCell.xib */,
 			);
 			path = DescriptionCell;
+			sourceTree = "<group>";
+		};
+		849C410F2715E7B1005F8876 /* Environments */ = {
+			isa = PBXGroup;
+			children = (
+				8424375F26AEE51100147A18 /* Info.plist */,
+			);
+			path = Environments;
+			sourceTree = "<group>";
+		};
+		849C41112715E8CF005F8876 /* MoviesModule */ = {
+			isa = PBXGroup;
+			children = (
+				849C41142715E8FD005F8876 /* View */,
+				849C41132715E8F0005F8876 /* Model */,
+				849C41122715E8E4005F8876 /* ViewModel */,
+			);
+			path = MoviesModule;
+			sourceTree = "<group>";
+		};
+		849C41122715E8E4005F8876 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		849C41132715E8F0005F8876 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		849C41142715E8FD005F8876 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -397,7 +437,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -452,7 +492,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -469,7 +509,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4NN6F8AKYC;
-				INFOPLIST_FILE = Movies/Info.plist;
+				INFOPLIST_FILE = Movies/Environments/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -488,7 +528,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4NN6F8AKYC;
-				INFOPLIST_FILE = Movies/Info.plist;
+				INFOPLIST_FILE = Movies/Environments/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
