@@ -10,7 +10,7 @@ class PosterTableViewCell: UITableViewCell {
 
     // MARK: - Private properties
 
-    private let networkManager = NetworkManager()
+    private let networkManager = MovieAPIService()
 
     // MARK: - Public methods
 

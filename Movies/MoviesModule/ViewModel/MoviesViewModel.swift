@@ -15,7 +15,7 @@ final class MoviesViewModel: MoviesViewModelProtocol {
 
     // MARK: - Private properties
 
-    private let networkManager = NetworkManager()
+    private let networkManager = MovieAPIService()
 
     // MARK: - Public methods
 

@@ -7,7 +7,7 @@ final class DetailViewController: UIViewController {
     // MARK: - Private properties
 
     private let tableView = UITableView()
-    private let networkManager = NetworkManager()
+    // private let networkManager = MovieAPIService()
 
     private let posterCellIdentifier = "PosterTableViewCell"
     private let titleCellIdentifier = "TitleTableViewCell"

@@ -39,7 +39,7 @@ final class MovieTableViewCell: UITableViewCell {
         return label
     }()
 
-    private let networkManager = NetworkManager()
+    private let networkManager = MovieAPIService()
 
     // MARK: - UITableViewCell
 
