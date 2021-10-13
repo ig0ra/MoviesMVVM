@@ -4,14 +4,14 @@
 import Foundation
 
 protocol MoviesViewModelProtocol {
-    var updateViewMovies: ((ViewData<Movies>) -> ())? { get set }
+    var updateViewData: ((ViewData<Movies>) -> ())? { get set }
     func fetchMovies()
 }
 
 final class MoviesViewModel: MoviesViewModelProtocol {
     // MARK: - Public properties
 
-    var updateViewMovies: ((ViewData<Movies>) -> ())?
+    var updateViewData: ((ViewData<Movies>) -> ())?
 
     // MARK: - Private properties
 
@@ -25,7 +25,7 @@ final class MoviesViewModel: MoviesViewModelProtocol {
             switch result {
             case let .success(movies):
                 guard let movies = movies else { return }
-                self.updateViewMovies?(.success(movies))
+                self.updateViewData?(.success(movies))
             case let .failure(error):
                 print(error)
             }

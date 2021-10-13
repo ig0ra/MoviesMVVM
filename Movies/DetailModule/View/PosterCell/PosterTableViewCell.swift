@@ -2,8 +2,8 @@
 // Copyright © Roadmap. All rights reserved.
 
 import UIKit
-/// Pooster cell
-class PosterTableViewCell: UITableViewCell {
+
+final class PosterTableViewCell: UITableViewCell {
     // MARK: - Visual components
 
     @IBOutlet private var posterImageView: UIImageView!

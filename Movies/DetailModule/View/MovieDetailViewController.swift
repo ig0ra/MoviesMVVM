@@ -1,30 +1,51 @@
-// DetailViewController.swift
+// MovieDetailViewController.swift
 // Copyright © Roadmap. All rights reserved.
 
 import UIKit
-/// Detail view controller
-final class DetailViewController: UIViewController {
+
+protocol DetailCellProtocol {}
+
+final class MovieDetailViewController: UIViewController {
     // MARK: - Private properties
 
     private let tableView = UITableView()
-    // private let networkManager = MovieAPIService()
+    private var viewModel: MovieDetailViewModelProtocol?
+    private var movieViewData: ViewData<Movie> = .initial {
+        didSet {
+            view.setNeedsLayout()
+        }
+    }
 
     private let posterCellIdentifier = "PosterTableViewCell"
     private let titleCellIdentifier = "TitleTableViewCell"
     private let descriptionCellIdentifier = "DecsriptionTableViewCell"
 
-    // MARK: - Public properties
-
-    var titleString: String?
-    var descriptionString: String?
-    var posterPath: String?
-
     // MARK: - UIViewController
+
+    convenience init(viewModel: MovieDetailViewModelProtocol) {
+        self.init()
+        self.viewModel = viewModel
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
         setupTableView()
+        getInfo()
+        fetchData()
+    }
+
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+
+        switch movieViewData {
+        case .initial:
+            break
+        case .success:
+            tableView.reloadData()
+        case let .failure(error):
+            print(error)
+        }
     }
 
     // MARK: - Private methods
@@ -53,9 +74,19 @@ final class DetailViewController: UIViewController {
         tableView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
         view.addSubview(tableView)
     }
+
+    private func getInfo() {
+        viewModel?.updateViewData = { [weak self] viewData in
+            self?.movieViewData = viewData
+        }
+    }
+
+    private func fetchData() {
+        viewModel?.fetchMovie()
+    }
 }
 
-extension DetailViewController: UITableViewDataSource {
+extension MovieDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { 3 }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -65,8 +96,8 @@ extension DetailViewController: UITableViewDataSource {
                 .dequeueReusableCell(withIdentifier: posterCellIdentifier, for: indexPath) as? PosterTableViewCell
             else { return UITableViewCell() }
 
-            if let path = posterPath {
-                cell.getImage(with: path)
+            if case let .success(movie) = movieViewData, let posterPath = movie.posterPath {
+                cell.getImage(with: posterPath)
             }
 
             return cell
@@ -74,7 +105,10 @@ extension DetailViewController: UITableViewDataSource {
             guard let cell = tableView
                 .dequeueReusableCell(withIdentifier: titleCellIdentifier, for: indexPath) as? TitleTableViewCell
             else { return UITableViewCell() }
-            cell.addTitle(title: titleString)
+
+            if case let .success(movie) = movieViewData {
+                cell.addTitle(title: movie.title)
+            }
 
             return cell
         case 2:
@@ -84,7 +118,10 @@ extension DetailViewController: UITableViewDataSource {
                     for: indexPath
                 ) as? DecsriptionTableViewCell
             else { return UITableViewCell() }
-            cell.addDescription(descriptionString)
+
+            if case let .success(movie) = movieViewData {
+                cell.addDescription(movie.overview)
+            }
 
             return cell
         default:
