@@ -10,18 +10,20 @@ class PosterTableViewCell: UITableViewCell {
 
     // MARK: - Private properties
 
-    private let networkManager = MovieAPIService()
+    private let imageAPIService = ImageAPIService()
 
     // MARK: - Public methods
 
     func getImage(with posterPath: String) {
         let urlString = "https://image.tmdb.org/t/p/w500\(posterPath)"
 
-        networkManager.fetchImage(with: urlString) { [weak self] result in
+        imageAPIService.fetchImage(with: urlString) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case let .success(data):
-                guard let data = data, let image = UIImage(data: data) else { return }
+                guard let data = data,
+                      let image = UIImage(data: data)
+                else { return }
                 DispatchQueue.main.async { self.posterImageView.image = image }
             case let .failure(error):
                 print(error)
