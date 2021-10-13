@@ -4,9 +4,9 @@
 import Foundation
 
 /// Optionst for fetched data handling
-enum MoviesViewData {
+enum ViewData<Model> {
     case initial
-    case success(Movies)
+    case success(Model)
     case failure(Error)
 }
 

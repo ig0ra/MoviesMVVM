@@ -4,14 +4,14 @@
 import Foundation
 
 protocol MoviesViewModelProtocol {
-    var updateViewMovies: ((MoviesViewData) -> ())? { get set }
+    var updateViewMovies: ((ViewData<Movies>) -> ())? { get set }
     func fetchMovies()
 }
 
 final class MoviesViewModel: MoviesViewModelProtocol {
     // MARK: - Public properties
 
-    var updateViewMovies: ((MoviesViewData) -> ())?
+    var updateViewMovies: ((ViewData<Movies>) -> ())?
 
     // MARK: - Private properties
 

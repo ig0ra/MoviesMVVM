@@ -2,16 +2,16 @@
 // Copyright © Roadmap. All rights reserved.
 
 import UIKit
-///
+
 final class MoviesViewController: UIViewController {
     // MARK: - Private properties
 
-    private var moviesViewModel: MoviesViewModelProtocol?
+    private var viewModel: MoviesViewModelProtocol?
 
     private let tableView = UITableView()
     private let movieCellIdentifier = "cell"
 
-    var moviesViewData: MoviesViewData = .initial {
+    var moviesViewData: ViewData<Movies> = .initial {
         didSet {
             view.setNeedsLayout()
         }
@@ -21,7 +21,7 @@ final class MoviesViewController: UIViewController {
 
     convenience init(viewModel: MoviesViewModelProtocol) {
         self.init()
-        moviesViewModel = viewModel
+        self.viewModel = viewModel
     }
 
     override func viewDidLoad() {
@@ -63,13 +63,13 @@ final class MoviesViewController: UIViewController {
     }
 
     private func getInfo() {
-        moviesViewModel?.updateViewMovies = { [weak self] moviesViewData in
-            self?.moviesViewData = moviesViewData
+        viewModel?.updateViewMovies = { [weak self] viewData in
+            self?.moviesViewData = viewData
         }
     }
 
     private func fetchData() {
-        moviesViewModel?.fetchMovies()
+        viewModel?.fetchMovies()
     }
 }
 
