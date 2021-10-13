@@ -1,12 +1,19 @@
-// Movies.swift
+// MoviesViewData.swift
 // Copyright © Roadmap. All rights reserved.
 
 import Foundation
 
+/// Optionst for fetched data handling
+enum ViewData<Model> {
+    case initial
+    case success(Model)
+    case failure(Error)
+}
+
 /// Movies
 struct Movies: Codable {
     let page: Int?
-    let results: [MovieResult]?
+    let results: [Movie]?
     let totalPages, totalResults: Int?
 
     enum CodingKeys: String, CodingKey {
@@ -16,8 +23,8 @@ struct Movies: Codable {
     }
 }
 
-/// Movie result
-struct MovieResult: Codable {
+/// Movies
+struct Movie: Codable {
     let adult: Bool?
     let backdropPath: String?
     let genreIDS: [Int]?
