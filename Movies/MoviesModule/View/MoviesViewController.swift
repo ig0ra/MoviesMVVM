@@ -6,30 +6,43 @@ import UIKit
 final class MoviesViewController: UIViewController {
     // MARK: - Private properties
 
-    private let tableView = UITableView()
-    private let networkManager = NetworkManager()
-    private let movieCellIdentifier = "cell"
-    private lazy var dataSource: Movies? = nil {
-        didSet {
-            guard let dataSource = dataSource?.results else { return }
-            movies = dataSource
-        }
-    }
+    private var moviesViewModel: MoviesViewModelProtocol?
 
-    private var movies: [MovieResult] = [] {
-        didSet { tableView.reloadData() }
+    private let tableView = UITableView()
+    private let movieCellIdentifier = "cell"
+
+    var moviesViewData: MoviesViewData = .initial {
+        didSet {
+            view.setNeedsLayout()
+        }
     }
 
     // MARK: - UIViewController
 
+    convenience init(viewModel: MoviesViewModelProtocol) {
+        self.init()
+        moviesViewModel = viewModel
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
         title = "Movies"
-
         setupTableView()
-
         getInfo()
+        fetchData()
+    }
+
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+
+        switch moviesViewData {
+        case .initial:
+            break
+        case .success:
+            tableView.reloadData()
+        case let .failure(error):
+            print(error)
+        }
     }
 
     // MARK: - Private methods
@@ -50,36 +63,40 @@ final class MoviesViewController: UIViewController {
     }
 
     private func getInfo() {
-        networkManager.fetchData { [weak self] result in
-            switch result {
-            case let .success(movies: movies):
-                self?.dataSource = movies
-
-                DispatchQueue.main.async { self?.tableView.reloadData() }
-            case let .failure(error: error):
-                print("Error: \(error.localizedDescription)")
-            }
+        moviesViewModel?.updateViewMovies = { [weak self] moviesViewData in
+            self?.moviesViewData = moviesViewData
         }
+    }
+
+    private func fetchData() {
+        moviesViewModel?.fetchMovies()
     }
 }
 
 // MARK: - UITableViewDataSource
 
 extension MoviesViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { movies.count }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard case let .success(movies) = moviesViewData,
+              let results = movies.results else { return 0 }
+        return results.count
+    }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: movieCellIdentifier,
             for: indexPath
-        ) as? MovieTableViewCell
+        ) as? MovieTableViewCell,
+            case let .success(movies) = moviesViewData,
+            let results = movies.results?[indexPath.row],
+            let path = results.posterPath
         else { return UITableViewCell() }
 
-        let resuls = movies[indexPath.row]
-
-        cell.getData(title: resuls.title, description: resuls.overview, date: resuls.releaseDate)
-
-        guard let path = resuls.posterPath else { return UITableViewCell() }
+        cell.getData(
+            title: results.title,
+            description: results.overview,
+            date: results.releaseDate
+        )
         cell.downloadImage(with: path)
 
         return cell
@@ -92,11 +109,14 @@ extension MoviesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
+        guard case let .success(movies) = moviesViewData,
+              let moviesResults = movies.results?[indexPath.row]
+        else { return }
         let detailVC = DetailViewController()
 
-        detailVC.posterPath = movies[indexPath.row].posterPath
-        detailVC.titleString = movies[indexPath.row].title
-        detailVC.descriptionString = movies[indexPath.row].overview
+        detailVC.posterPath = moviesResults.posterPath
+        detailVC.titleString = moviesResults.title
+        detailVC.descriptionString = moviesResults.overview
 
         show(detailVC, sender: self)
     }

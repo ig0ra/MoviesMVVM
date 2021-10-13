@@ -26,6 +26,8 @@
 		84650CD226B4794300A472F5 /* TitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84650CD026B4794300A472F5 /* TitleTableViewCell.xib */; };
 		84650CD626B4797400A472F5 /* DecsriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84650CD426B4797400A472F5 /* DecsriptionTableViewCell.swift */; };
 		84650CD726B4797400A472F5 /* DecsriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84650CD526B4797400A472F5 /* DecsriptionTableViewCell.xib */; };
+		849C41162715EA32005F8876 /* MoviesViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C41152715EA32005F8876 /* MoviesViewData.swift */; };
+		849C41182715EAD6005F8876 /* MoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C41172715EAD6005F8876 /* MoviesViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		84650CD026B4794300A472F5 /* TitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleTableViewCell.xib; sourceTree = "<group>"; };
 		84650CD426B4797400A472F5 /* DecsriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecsriptionTableViewCell.swift; sourceTree = "<group>"; };
 		84650CD526B4797400A472F5 /* DecsriptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DecsriptionTableViewCell.xib; sourceTree = "<group>"; };
+		849C41152715EA32005F8876 /* MoviesViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewData.swift; sourceTree = "<group>"; };
+		849C41172715EAD6005F8876 /* MoviesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +129,6 @@
 		84650CC526B3467400A472F5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				8424375526AEE50C00147A18 /* MoviesViewController.swift */,
 				84650CBC26B292C600A472F5 /* DetailViewController.swift */,
 			);
 			path = Controllers;
@@ -134,7 +137,6 @@
 		84650CC626B3468500A472F5 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				84650CCE26B478F300A472F5 /* MovieCell */,
 				84650CCD26B46D4D00A472F5 /* PosterCell */,
 				84650CD326B4794C00A472F5 /* TitleCell */,
 				84650CD826B4797C00A472F5 /* DescriptionCell */,
@@ -206,9 +208,9 @@
 		849C41112715E8CF005F8876 /* MoviesModule */ = {
 			isa = PBXGroup;
 			children = (
-				849C41142715E8FD005F8876 /* View */,
 				849C41132715E8F0005F8876 /* Model */,
 				849C41122715E8E4005F8876 /* ViewModel */,
+				849C41142715E8FD005F8876 /* View */,
 			);
 			path = MoviesModule;
 			sourceTree = "<group>";
@@ -216,6 +218,7 @@
 		849C41122715E8E4005F8876 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				849C41172715EAD6005F8876 /* MoviesViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 		849C41132715E8F0005F8876 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				849C41152715EA32005F8876 /* MoviesViewData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -230,6 +234,8 @@
 		849C41142715E8FD005F8876 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				84650CCE26B478F300A472F5 /* MovieCell */,
+				8424375526AEE50C00147A18 /* MoviesViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -352,7 +358,9 @@
 				8424375226AEE50C00147A18 /* AppDelegate.swift in Sources */,
 				84650CB926B1C9EE00A472F5 /* Movies.swift in Sources */,
 				84650CBB26B1D28300A472F5 /* NetworkManager.swift in Sources */,
+				849C41182715EAD6005F8876 /* MoviesViewModel.swift in Sources */,
 				84650CD626B4797400A472F5 /* DecsriptionTableViewCell.swift in Sources */,
+				849C41162715EA32005F8876 /* MoviesViewData.swift in Sources */,
 				84650CD126B4794300A472F5 /* TitleTableViewCell.swift in Sources */,
 				84650CB526B1B0B100A472F5 /* MovieTableViewCell.swift in Sources */,
 				84650CCB26B46D4200A472F5 /* PosterTableViewCell.swift in Sources */,
