@@ -15,9 +15,7 @@ class PosterTableViewCell: UITableViewCell {
     // MARK: - Public methods
 
     func getImage(with posterPath: String) {
-        let urlString = "https://image.tmdb.org/t/p/w500\(posterPath)"
-
-        imageAPIService.fetchImage(with: urlString) { [weak self] result in
+        imageAPIService.fetchImage(with: posterPath) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case let .success(data):

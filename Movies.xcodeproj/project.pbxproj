@@ -29,6 +29,7 @@
 		849C41182715EAD6005F8876 /* MoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C41172715EAD6005F8876 /* MoviesViewModel.swift */; };
 		849C411C27171AB3005F8876 /* ImageAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C411B27171AB3005F8876 /* ImageAPIService.swift */; };
 		849C41202717287B005F8876 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C411F2717287B005F8876 /* Constants.swift */; };
+		849C412227172CE1005F8876 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C412127172CE1005F8876 /* CustomError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		849C41172715EAD6005F8876 /* MoviesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewModel.swift; sourceTree = "<group>"; };
 		849C411B27171AB3005F8876 /* ImageAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPIService.swift; sourceTree = "<group>"; };
 		849C411F2717287B005F8876 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		849C412127172CE1005F8876 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				849C411F2717287B005F8876 /* Constants.swift */,
+				849C412127172CE1005F8876 /* CustomError.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 			files = (
 				849C411C27171AB3005F8876 /* ImageAPIService.swift in Sources */,
 				8424375626AEE50C00147A18 /* MoviesViewController.swift in Sources */,
+				849C412227172CE1005F8876 /* CustomError.swift in Sources */,
 				8424375226AEE50C00147A18 /* AppDelegate.swift in Sources */,
 				84650CBB26B1D28300A472F5 /* MovieAPIService.swift in Sources */,
 				849C41182715EAD6005F8876 /* MoviesViewModel.swift in Sources */,
