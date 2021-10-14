@@ -15,12 +15,18 @@ final class MoviesViewModel: MoviesViewModelProtocol {
 
     // MARK: - Private properties
 
-    private let networkManager = MovieAPIService()
+    private let movieAPIService: MovieAPIServiceProtocol
+
+    // MARK: - Initialization
+
+    init(movieAPIService: MovieAPIServiceProtocol) {
+        self.movieAPIService = movieAPIService
+    }
 
     // MARK: - Public methods
 
     func fetchMovies() {
-        networkManager.fetchData { [weak self] result in
+        movieAPIService.fetchData { [weak self] result in
             guard let self = self else { return }
             switch result {
             case let .success(movies):

@@ -17,12 +17,19 @@ final class MovieDetailViewModel: MovieDetailViewModelProtocol {
 
     // MARK: - Private properties
 
-    private let networkManager = MovieAPIService()
+    private let movieAPIService: MovieAPIServiceProtocol
+
+    // MARK: - Initialisation
+
+    init(movieAPIService: MovieAPIServiceProtocol, indexOfMovie: Int?) {
+        self.movieAPIService = movieAPIService
+        self.indexOfMovie = indexOfMovie
+    }
 
     // MARK: - Public properties
 
     func fetchMovie() {
-        networkManager.fetchData { [weak self] result in
+        movieAPIService.fetchData { [weak self] result in
             guard let self = self,
                   let index = self.indexOfMovie,
                   let updateViewData = self.updateViewData
