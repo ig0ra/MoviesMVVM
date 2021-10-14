@@ -2,26 +2,26 @@
 // Copyright © Roadmap. All rights reserved.
 
 import UIKit
-/// Pooster cell
-class PosterTableViewCell: UITableViewCell {
+
+final class PosterTableViewCell: UITableViewCell {
     // MARK: - Visual components
 
     @IBOutlet private var posterImageView: UIImageView!
 
     // MARK: - Private properties
 
-    private let networkManager = NetworkManager()
+    private let imageAPIService = ImageAPIService()
 
     // MARK: - Public methods
 
     func getImage(with posterPath: String) {
-        let urlString = "https://image.tmdb.org/t/p/w500\(posterPath)"
-
-        networkManager.fetchImage(with: urlString) { [weak self] result in
+        imageAPIService.fetchImage(with: posterPath) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case let .success(data):
-                guard let data = data, let image = UIImage(data: data) else { return }
+                guard let data = data,
+                      let image = UIImage(data: data)
+                else { return }
                 DispatchQueue.main.async { self.posterImageView.image = image }
             case let .failure(error):
                 print(error)

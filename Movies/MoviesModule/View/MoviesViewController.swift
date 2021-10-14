@@ -63,7 +63,7 @@ final class MoviesViewController: UIViewController {
     }
 
     private func getInfo() {
-        viewModel?.updateViewMovies = { [weak self] viewData in
+        viewModel?.updateViewData = { [weak self] viewData in
             self?.moviesViewData = viewData
         }
     }
@@ -109,14 +109,17 @@ extension MoviesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        guard case let .success(movies) = moviesViewData,
-              let moviesResults = movies.results?[indexPath.row]
-        else { return }
-        let detailVC = DetailViewController()
+//        guard case let .success(movies) = moviesViewData,
+//              let moviesResults = movies.results?[indexPath.row]
+//        else { return }
 
-        detailVC.posterPath = moviesResults.posterPath
-        detailVC.titleString = moviesResults.title
-        detailVC.descriptionString = moviesResults.overview
+        let movieDetainViewModel = MovieDetailViewModel()
+        movieDetainViewModel.indexOfMovie = indexPath.row
+        let detailVC = MovieDetailViewController(viewModel: movieDetainViewModel)
+
+//        detailVC.posterPath = moviesResults.posterPath
+//        detailVC.titleString = moviesResults.title
+//        detailVC.descriptionString = moviesResults.overview
 
         show(detailVC, sender: self)
     }
