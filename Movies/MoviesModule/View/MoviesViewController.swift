@@ -4,6 +4,10 @@
 import UIKit
 
 final class MoviesViewController: UIViewController {
+    // MARK: - Public properties
+
+    var tapCell: ((Int?) -> ())?
+
     // MARK: - Private properties
 
     private var viewModel: MoviesViewModelProtocol?
@@ -108,10 +112,6 @@ extension MoviesViewController: UITableViewDataSource {
 extension MoviesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-
-        let assemblyModule = AssemblyModule()
-        let detailVC = assemblyModule.createDetailModule(indexOfMovie: indexPath.row)
-
-        show(detailVC, sender: self)
+        tapCell?(indexPath.row)
     }
 }

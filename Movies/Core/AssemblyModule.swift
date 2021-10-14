@@ -5,7 +5,7 @@ import UIKit
 
 protocol AssemblyProtocol {
     func createMoviesModule() -> UIViewController
-    func createDetailModule(indexOfMovie: Int) -> UIViewController
+    func createDetailModule(indexOfMovie: Int?) -> UIViewController
 }
 
 final class AssemblyModule: AssemblyProtocol {
@@ -16,7 +16,7 @@ final class AssemblyModule: AssemblyProtocol {
         return viewControler
     }
 
-    func createDetailModule(indexOfMovie: Int) -> UIViewController {
+    func createDetailModule(indexOfMovie: Int?) -> UIViewController {
         let movieAPIService = MovieAPIService()
         let viewModel = MovieDetailViewModel(movieAPIService: movieAPIService, indexOfMovie: indexOfMovie)
         let viewController = MovieDetailViewController(viewModel: viewModel)

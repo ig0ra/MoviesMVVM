@@ -5,13 +5,16 @@ import UIKit
 
 final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
+    var coordinator: ApplicationCoordinator?
 
     func scene(_ scene: UIScene, willConnectTo _: UISceneSession, options _: UIScene.ConnectionOptions) {
-        let assembyModule = AssemblyModule()
-        let moviesVC = assembyModule.createMoviesModule()
-        let navController = UINavigationController(rootViewController: moviesVC)
-        window?.rootViewController = navController
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(windowScene: windowScene)
         window?.makeKeyAndVisible()
         window?.overrideUserInterfaceStyle = .dark
+
+        let assembyModule = AssemblyModule()
+        coordinator = ApplicationCoordinator(assemblyModule: assembyModule)
+        coordinator?.start()
     }
 }
