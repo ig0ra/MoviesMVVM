@@ -7,16 +7,17 @@ final class MoviesCoordinator: BaseCoordinator {
     // MARK: - Public properties
 
     var onFinishFlow: (() -> ())?
-    var rootViewController: UINavigationController?
 
     // MARK: - Private properties
 
     private var assemblyModule: AssemblyProtocol?
+    private var navigationController: UINavigationController?
 
     // MARK: - Initialization
 
-    init(assemblyModule: AssemblyProtocol) {
+    required init(assemblyModule: AssemblyProtocol, navigationController: UINavigationController?) {
         self.assemblyModule = assemblyModule
+        self.navigationController = navigationController
     }
 
     // MARK: - BaseCoordinator
@@ -34,15 +35,15 @@ final class MoviesCoordinator: BaseCoordinator {
             self.pushMoviesDetailModule(indexOfMovie: index)
         }
 
-        rootViewController = UINavigationController(rootViewController: viewController)
-        guard let rootViewController = rootViewController else { return }
-        setAsRoot(rootViewController)
+        navigationController = UINavigationController(rootViewController: viewController)
+        guard let navigationController = navigationController else { return }
+        setAsRoot(navigationController)
     }
 
     private func pushMoviesDetailModule(indexOfMovie: Int?) {
         guard let viewController = assemblyModule?.createDetailModule(indexOfMovie: indexOfMovie)
             as? MovieDetailViewController
         else { return }
-        rootViewController?.pushViewController(viewController, animated: true)
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }

@@ -5,46 +5,36 @@
 import UIKit
 import XCTest
 
-final class MockAssemblyModule: AssemblyProtocol {
-    func createMoviesModule() -> UIViewController {
-        let mockViewModel = MockMoviesViewModule()
-        let mockMoviesViewController = MoviesViewController(viewModel: mockViewModel)
-        return mockMoviesViewController
+final class MockNavigationController: UINavigationController {
+    var presentedVC: UIViewController?
+
+    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+        presentedVC = viewController
+        super.pushViewController(viewController, animated: animated)
     }
-
-    func createDetailModule(indexOfMovie: Int?) -> UIViewController {
-        UIViewController()
-    }
-}
-
-final class MockMoviesViewModule: MoviesViewModelProtocol {
-    var updateViewData: ((ViewData<Movies>) -> ())?
-
-    func fetchMovies() {}
 }
 
 final class MoviesCoordinatorTests: XCTestCase {
-    var moviesCoordinator: MoviesCoordinator?
-    var mockAssemblyModule: AssemblyProtocol?
     var applicationCoordinator: ApplicationCoordinator?
-    var navigetionConroller: UINavigationController?
+    var mockNavigationConroller: MockNavigationController?
 
     override func setUpWithError() throws {
-        mockAssemblyModule = MockAssemblyModule()
-        guard let mockAssemblyModule = mockAssemblyModule else { return }
-        applicationCoordinator = ApplicationCoordinator(assemblyModule: mockAssemblyModule)
-        moviesCoordinator = MoviesCoordinator(assemblyModule: mockAssemblyModule)
+        mockNavigationConroller = MockNavigationController()
+        applicationCoordinator = ApplicationCoordinator(
+            assemblyModule: AssemblyModule(),
+            navigationController: mockNavigationConroller
+        )
     }
 
     override func tearDownWithError() throws {
-        mockAssemblyModule = nil
-        navigetionConroller = nil
-        moviesCoordinator = nil
         applicationCoordinator = nil
+        mockNavigationConroller = nil
     }
 
-    func testShowingMoviesModule() {
-        moviesCoordinator?.start()
-        XCTAssertTrue(moviesCoordinator?.rootViewController?.viewControllers.first is MoviesViewController)
+    func testPresentingMoviesModule() {
+        applicationCoordinator?.start()
+        guard let moviesViewController = mockNavigationConroller?.presentedVC as? MoviesViewController else { return }
+        moviesViewController.tapCell?(2)
+        XCTAssertTrue(moviesViewController.presentedViewController is MovieDetailViewController)
     }
 }
