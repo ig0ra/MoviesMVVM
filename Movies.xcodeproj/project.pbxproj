@@ -31,6 +31,7 @@
 		849C41202717287B005F8876 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C411F2717287B005F8876 /* Constants.swift */; };
 		849C412227172CE1005F8876 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C412127172CE1005F8876 /* CustomError.swift */; };
 		849C412527173209005F8876 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849C412427173209005F8876 /* DetailViewModel.swift */; };
+		84D4B4ED2718412500E49F56 /* AssemblyModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4B4EC2718412500E49F56 /* AssemblyModule.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		849C411F2717287B005F8876 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		849C412127172CE1005F8876 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		849C412427173209005F8876 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		84D4B4EC2718412500E49F56 /* AssemblyModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyModule.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,9 +95,9 @@
 			isa = PBXGroup;
 			children = (
 				849C411E2717286D005F8876 /* Helpers */,
-				849C411D27171C2A005F8876 /* DetailModule */,
 				849C41112715E8CF005F8876 /* MoviesModule */,
-				84650CC426B3465D00A472F5 /* Core delegates */,
+				849C411D27171C2A005F8876 /* DetailModule */,
+				84650CC426B3465D00A472F5 /* Core */,
 				84650CC726B346A200A472F5 /* Network */,
 				84650CC826B4456200A472F5 /* Recources */,
 				849C410F2715E7B1005F8876 /* Environments */,
@@ -114,13 +116,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		84650CC426B3465D00A472F5 /* Core delegates */ = {
+		84650CC426B3465D00A472F5 /* Core */ = {
 			isa = PBXGroup;
 			children = (
 				8424375126AEE50C00147A18 /* AppDelegate.swift */,
 				8424375326AEE50C00147A18 /* SceneDelegate.swift */,
+				84D4B4EC2718412500E49F56 /* AssemblyModule.swift */,
 			);
-			path = "Core delegates";
+			path = Core;
 			sourceTree = "<group>";
 		};
 		84650CC626B3468500A472F5 /* View */ = {
@@ -377,6 +380,7 @@
 				8424375226AEE50C00147A18 /* AppDelegate.swift in Sources */,
 				84650CBB26B1D28300A472F5 /* MovieAPIService.swift in Sources */,
 				849C41182715EAD6005F8876 /* MoviesViewModel.swift in Sources */,
+				84D4B4ED2718412500E49F56 /* AssemblyModule.swift in Sources */,
 				84650CD626B4797400A472F5 /* DecsriptionTableViewCell.swift in Sources */,
 				849C41162715EA32005F8876 /* MoviesViewData.swift in Sources */,
 				849C41202717287B005F8876 /* Constants.swift in Sources */,

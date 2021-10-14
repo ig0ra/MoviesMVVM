@@ -109,17 +109,8 @@ extension MoviesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-//        guard case let .success(movies) = moviesViewData,
-//              let moviesResults = movies.results?[indexPath.row]
-//        else { return }
-
-        let movieDetainViewModel = MovieDetailViewModel()
-        movieDetainViewModel.indexOfMovie = indexPath.row
-        let detailVC = MovieDetailViewController(viewModel: movieDetainViewModel)
-
-//        detailVC.posterPath = moviesResults.posterPath
-//        detailVC.titleString = moviesResults.title
-//        detailVC.descriptionString = moviesResults.overview
+        let assemblyModule = AssemblyModule()
+        let detailVC = assemblyModule.createDetailModule(indexOfMovie: indexPath.row)
 
         show(detailVC, sender: self)
     }

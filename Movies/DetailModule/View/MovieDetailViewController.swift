@@ -3,8 +3,6 @@
 
 import UIKit
 
-protocol DetailCellProtocol {}
-
 final class MovieDetailViewController: UIViewController {
     // MARK: - Private properties
 

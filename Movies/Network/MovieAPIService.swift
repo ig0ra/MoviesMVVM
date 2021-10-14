@@ -7,7 +7,7 @@ protocol MovieAPIServiceProtocol {
     func fetchData(completion: @escaping (Result<Movies?, Error>) -> Void)
 }
 
-final class MovieAPIService {
+final class MovieAPIService: MovieAPIServiceProtocol {
     // MARK: - Private properties
 
     private let session = URLSession.shared
