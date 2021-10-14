@@ -7,10 +7,10 @@ final class MoviesCoordinator: BaseCoordinator {
     // MARK: - Public properties
 
     var onFinishFlow: (() -> ())?
+    var rootViewController: UINavigationController?
 
     // MARK: - Private properties
 
-    private var rootViewController: UINavigationController?
     private var assemblyModule: AssemblyProtocol?
 
     // MARK: - Initialization
