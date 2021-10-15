@@ -3,21 +3,11 @@
 
 import Foundation
 
-protocol ImageAPIServiceProtocol {
-    func fetchImage(
-        with posterPath: String,
-        completion: @escaping (Result<Data?, Error>) -> ()
-    )
-}
-
-final class ImageAPIService {
+final class ImageAPIService: LoadImageProtocol {
     private let session = URLSession.shared
 
-    func fetchImage(
-        with posterPath: String,
-        completion: @escaping (Result<Data?, Error>) -> ()
-    ) {
-        let urlString = Constants.getPosterURLString(path: posterPath)
+    func downloadImage(urlPath: String, completion: @escaping (Result<Data?, Error>) -> ()) {
+        let urlString = Constants.getPosterURLString(path: urlPath)
         guard let url = URL(string: urlString)
         else {
             completion(.failure(CustomError.urlIsNil))

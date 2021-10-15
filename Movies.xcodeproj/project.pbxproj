@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -37,6 +37,11 @@
 		84D4B4F52718534300E49F56 /* MoviesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4B4F42718534300E49F56 /* MoviesCoordinator.swift */; };
 		84D4B50B27185F0700E49F56 /* MoviesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4B50A27185F0700E49F56 /* MoviesUITests.swift */; };
 		84D4B51427185F8700E49F56 /* MoviesCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4B51327185F8700E49F56 /* MoviesCoordinatorTests.swift */; };
+		84D4B5172718AD8A00E49F56 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 84D4B5162718AD8A00E49F56 /* Realm */; };
+		84D4B5192718AD8A00E49F56 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 84D4B5182718AD8A00E49F56 /* RealmSwift */; };
+		84D4B51D2718AED400E49F56 /* CacheImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4B51C2718AED400E49F56 /* CacheImageService.swift */; };
+		84D4B5202719716600E49F56 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4B51E2719716500E49F56 /* ImageService.swift */; };
+		84D4B5212719716600E49F56 /* LoadImageProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4B51F2719716600E49F56 /* LoadImageProxy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +99,9 @@
 		84D4B50C27185F0700E49F56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84D4B51227185F8700E49F56 /* MoviesTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MoviesTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		84D4B51327185F8700E49F56 /* MoviesCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesCoordinatorTests.swift; sourceTree = "<group>"; };
+		84D4B51C2718AED400E49F56 /* CacheImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheImageService.swift; sourceTree = "<group>"; };
+		84D4B51E2719716500E49F56 /* ImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
+		84D4B51F2719716600E49F56 /* LoadImageProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadImageProxy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +109,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84D4B5192718AD8A00E49F56 /* RealmSwift in Frameworks */,
+				84D4B5172718AD8A00E49F56 /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,7 +158,7 @@
 				849C41112715E8CF005F8876 /* MoviesModule */,
 				849C411D27171C2A005F8876 /* DetailModule */,
 				84650CC426B3465D00A472F5 /* Core */,
-				84650CC726B346A200A472F5 /* Network */,
+				84D4B51A2718ADD500E49F56 /* Services */,
 				84650CC826B4456200A472F5 /* Recources */,
 				849C410F2715E7B1005F8876 /* Environments */,
 				84650CBE26B345B700A472F5 /* Extensions */,
@@ -340,6 +350,25 @@
 			path = MoviesUITests;
 			sourceTree = "<group>";
 		};
+		84D4B51A2718ADD500E49F56 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				84D4B51B2718AE2900E49F56 /* ImageCacheService */,
+				84650CC726B346A200A472F5 /* Network */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		84D4B51B2718AE2900E49F56 /* ImageCacheService */ = {
+			isa = PBXGroup;
+			children = (
+				84D4B51E2719716500E49F56 /* ImageService.swift */,
+				84D4B51F2719716600E49F56 /* LoadImageProxy.swift */,
+				84D4B51C2718AED400E49F56 /* CacheImageService.swift */,
+			);
+			path = ImageCacheService;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -358,6 +387,10 @@
 			dependencies = (
 			);
 			name = Movies;
+			packageProductDependencies = (
+				84D4B5162718AD8A00E49F56 /* Realm */,
+				84D4B5182718AD8A00E49F56 /* RealmSwift */,
+			);
 			productName = Movies;
 			productReference = 8424374E26AEE50C00147A18 /* Movies.app */;
 			productType = "com.apple.product-type.application";
@@ -430,6 +463,9 @@
 				Base,
 			);
 			mainGroup = 8424374526AEE50C00147A18;
+			packageReferences = (
+				84D4B5152718AD8A00E49F56 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+			);
 			productRefGroup = 8424374F26AEE50C00147A18 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -532,7 +568,10 @@
 				849C412527173209005F8876 /* DetailViewModel.swift in Sources */,
 				84D4B4F52718534300E49F56 /* MoviesCoordinator.swift in Sources */,
 				84D4B4F12718520E00E49F56 /* BaseCoordinator.swift in Sources */,
+				84D4B5202719716600E49F56 /* ImageService.swift in Sources */,
+				84D4B51D2718AED400E49F56 /* CacheImageService.swift in Sources */,
 				84650CB726B1BA0F00A472F5 /* UIView + Extension.swift in Sources */,
+				84D4B5212719716600E49F56 /* LoadImageProxy.swift in Sources */,
 				8424375426AEE50C00147A18 /* SceneDelegate.swift in Sources */,
 				84650CBD26B292C700A472F5 /* MovieDetailViewController.swift in Sources */,
 				84650CC226B3461700A472F5 /* UIColor+Extension.swift in Sources */,
@@ -872,6 +911,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		84D4B5152718AD8A00E49F56 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.17.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		84D4B5162718AD8A00E49F56 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84D4B5152718AD8A00E49F56 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		84D4B5182718AD8A00E49F56 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84D4B5152718AD8A00E49F56 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8424374626AEE50C00147A18 /* Project object */;
 }
