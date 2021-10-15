@@ -11,7 +11,8 @@ protocol AssemblyProtocol {
 final class AssemblyModule: AssemblyProtocol {
     func createMoviesModule() -> UIViewController {
         let movieAPIService = MovieAPIService()
-        let viewModel = MoviesViewModel(movieAPIService: movieAPIService)
+        let realmRepository = RealmRepository<Movie>()
+        let viewModel = MoviesViewModel(movieAPIService: movieAPIService, databaseRepository: realmRepository)
         let viewControler = MoviesViewController(viewModel: viewModel)
         return viewControler
     }

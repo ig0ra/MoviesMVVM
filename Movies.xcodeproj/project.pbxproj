@@ -42,6 +42,8 @@
 		84D4B51D2718AED400E49F56 /* CacheImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4B51C2718AED400E49F56 /* CacheImageService.swift */; };
 		84D4B5202719716600E49F56 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4B51E2719716500E49F56 /* ImageService.swift */; };
 		84D4B5212719716600E49F56 /* LoadImageProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4B51F2719716600E49F56 /* LoadImageProxy.swift */; };
+		84D4B5242719949100E49F56 /* DatabaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4B5232719949100E49F56 /* DatabaseRepository.swift */; };
+		84D4B5262719969800E49F56 /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D4B5252719969800E49F56 /* RealmRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +104,8 @@
 		84D4B51C2718AED400E49F56 /* CacheImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheImageService.swift; sourceTree = "<group>"; };
 		84D4B51E2719716500E49F56 /* ImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		84D4B51F2719716600E49F56 /* LoadImageProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadImageProxy.swift; sourceTree = "<group>"; };
+		84D4B5232719949100E49F56 /* DatabaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseRepository.swift; sourceTree = "<group>"; };
+		84D4B5252719969800E49F56 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -353,6 +357,7 @@
 		84D4B51A2718ADD500E49F56 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				84D4B5222719946500E49F56 /* Database */,
 				84D4B51B2718AE2900E49F56 /* ImageCacheService */,
 				84650CC726B346A200A472F5 /* Network */,
 			);
@@ -367,6 +372,15 @@
 				84D4B51C2718AED400E49F56 /* CacheImageService.swift */,
 			);
 			path = ImageCacheService;
+			sourceTree = "<group>";
+		};
+		84D4B5222719946500E49F56 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				84D4B5232719949100E49F56 /* DatabaseRepository.swift */,
+				84D4B5252719969800E49F56 /* RealmRepository.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -559,6 +573,7 @@
 				849C41182715EAD6005F8876 /* MoviesViewModel.swift in Sources */,
 				84D4B4ED2718412500E49F56 /* AssemblyModule.swift in Sources */,
 				84650CD626B4797400A472F5 /* DecsriptionTableViewCell.swift in Sources */,
+				84D4B5262719969800E49F56 /* RealmRepository.swift in Sources */,
 				849C41162715EA32005F8876 /* MoviesViewData.swift in Sources */,
 				849C41202717287B005F8876 /* Constants.swift in Sources */,
 				84650CD126B4794300A472F5 /* TitleTableViewCell.swift in Sources */,
@@ -567,6 +582,7 @@
 				84650CC026B345ED00A472F5 /* CGFloat+Extension.swift in Sources */,
 				849C412527173209005F8876 /* DetailViewModel.swift in Sources */,
 				84D4B4F52718534300E49F56 /* MoviesCoordinator.swift in Sources */,
+				84D4B5242719949100E49F56 /* DatabaseRepository.swift in Sources */,
 				84D4B4F12718520E00E49F56 /* BaseCoordinator.swift in Sources */,
 				84D4B5202719716600E49F56 /* ImageService.swift in Sources */,
 				84D4B51D2718AED400E49F56 /* CacheImageService.swift in Sources */,

@@ -21,7 +21,10 @@ final class MovieDetailViewModel: MovieDetailViewModelProtocol {
 
     // MARK: - Initialisation
 
-    init(movieAPIService: MovieAPIServiceProtocol, indexOfMovie: Int?) {
+    init(
+        movieAPIService: MovieAPIServiceProtocol,
+        indexOfMovie: Int?
+    ) {
         self.movieAPIService = movieAPIService
         self.indexOfMovie = indexOfMovie
     }

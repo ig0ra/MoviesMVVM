@@ -2,6 +2,7 @@
 // Copyright © Roadmap. All rights reserved.
 
 import Foundation
+import RealmSwift
 
 /// Optionst for fetched data handling
 enum ViewData<Model> {
@@ -24,22 +25,20 @@ struct Movies: Codable {
 }
 
 /// Movies
-struct Movie: Codable {
-    let adult: Bool?
-    let backdropPath: String?
-    let genreIDS: [Int]?
-    let id: Int?
-    let originalLanguage, originalTitle, overview: String?
-    let popularity: Double?
-    let posterPath, releaseDate, title: String?
-    let video: Bool?
-    let voteAverage: Double?
-    let voteCount: Int?
+final class Movie: Object, Codable {
+    @objc dynamic var adult = false
+    @objc dynamic var backdropPath: String?
+    @objc dynamic var id = Int()
+    @objc dynamic var originalLanguage, originalTitle, overview: String?
+    @objc dynamic var popularity = Double()
+    @objc dynamic var posterPath, releaseDate, title: String?
+    @objc dynamic var video = false
+    @objc dynamic var voteAverage = Double()
+    @objc dynamic var voteCount = Int()
 
     enum CodingKeys: String, CodingKey {
         case adult
         case backdropPath = "backdrop_path"
-        case genreIDS = "genre_ids"
         case id
         case originalLanguage = "original_language"
         case originalTitle = "original_title"
@@ -49,5 +48,9 @@ struct Movie: Codable {
         case title, video
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
+    }
+
+    override class func primaryKey() -> String? {
+        "id"
     }
 }
