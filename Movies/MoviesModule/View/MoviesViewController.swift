@@ -15,7 +15,7 @@ final class MoviesViewController: UIViewController {
     private let tableView = UITableView()
     private let movieCellIdentifier = "cell"
 
-    var moviesViewData: ViewData<Movies> = .initial {
+    var moviesViewData: ViewData<[Movie]> = .initial {
         didSet {
             view.setNeedsLayout()
         }
@@ -81,9 +81,8 @@ final class MoviesViewController: UIViewController {
 
 extension MoviesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard case let .success(movies) = moviesViewData,
-              let results = movies.results else { return 0 }
-        return results.count
+        guard case let .success(movies) = moviesViewData else { return 0 }
+        return movies.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -92,14 +91,15 @@ extension MoviesViewController: UITableViewDataSource {
             for: indexPath
         ) as? MovieTableViewCell,
             case let .success(movies) = moviesViewData,
-            let results = movies.results?[indexPath.row],
-            let path = results.posterPath
+            let path = movies[indexPath.row].posterPath
         else { return UITableViewCell() }
 
+        let movie = movies[indexPath.row]
+
         cell.getData(
-            title: results.title,
-            description: results.overview,
-            date: results.releaseDate
+            title: movie.title,
+            description: movie.overview,
+            date: movie.releaseDate
         )
         cell.downloadImage(with: path)
 

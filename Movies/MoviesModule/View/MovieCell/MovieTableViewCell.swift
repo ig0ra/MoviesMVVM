@@ -39,7 +39,7 @@ final class MovieTableViewCell: UITableViewCell {
         return label
     }()
 
-    private let imageAPIService = ImageAPIService()
+    private let imageService = ImageService()
 
     // MARK: - UITableViewCell
 
@@ -127,14 +127,9 @@ final class MovieTableViewCell: UITableViewCell {
     }
 
     func downloadImage(with posterPath: String) {
-        imageAPIService.fetchImage(with: posterPath) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case let .success(data):
-                guard let data = data, let image = UIImage(data: data) else { return }
-                DispatchQueue.main.async { self.posterImageView.image = image }
-            case let .failure(error):
-                print(error)
+        imageService.getImage(urlPath: posterPath) { [weak self] image in
+            DispatchQueue.main.async {
+                self?.posterImageView.image = image
             }
         }
     }
