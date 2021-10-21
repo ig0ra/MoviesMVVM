@@ -4,13 +4,6 @@
 import Foundation
 import RealmSwift
 
-/// Optionst for fetched data handling
-enum ViewData<Model> {
-    case initial
-    case success(Model)
-    case failure(Error)
-}
-
 /// Movies
 struct Movies: Codable {
     let page: Int?
@@ -24,7 +17,6 @@ struct Movies: Codable {
     }
 }
 
-/// Movies
 final class Movie: Object, Codable {
     @objc dynamic var adult = false
     @objc dynamic var backdropPath: String?
