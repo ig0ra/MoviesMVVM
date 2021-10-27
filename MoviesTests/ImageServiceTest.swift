@@ -1,5 +1,5 @@
 // ImageServiceTest.swift
-// Copyright © Roadmap. All rights reserved.
+// Copyright © Igor Obrizko. All rights reserved.
 
 //
 //  ImageServiceTest.swift
@@ -23,7 +23,6 @@ final class ImageServiceTest: XCTestCase {
 
     func testGettingImage() {
         var myImage: UIImage?
-        // "https://www.themoviedb.org/t/p/w600_and_h900_bestv2"
         imageService?.getImage(urlPath: "/iSHovbdANmUUwp4tTCYc9gTSFlj.jpg", completion: { image in
             guard let image = image else { return }
             myImage = image

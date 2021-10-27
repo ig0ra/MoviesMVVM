@@ -330,8 +330,8 @@
 			children = (
 				84D4B4FE27185EFB00E49F56 /* Info.plist */,
 				84D4B51327185F8700E49F56 /* MoviesCoordinatorTests.swift */,
-				84D4B51227185F8700E49F56 /* MoviesTests-Bridging-Header.h */,
 				84D4B527271C3CA900E49F56 /* ImageServiceTest.swift */,
+				84D4B51227185F8700E49F56 /* MoviesTests-Bridging-Header.h */,
 			);
 			path = MoviesTests;
 			sourceTree = "<group>";

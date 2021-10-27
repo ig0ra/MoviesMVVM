@@ -1,5 +1,5 @@
-// MoviesViewData.swift
-// Copyright © Roadmap. All rights reserved.
+// Movies.swift
+// Copyright © Igor Obrizko. All rights reserved.
 
 import Foundation
 import RealmSwift

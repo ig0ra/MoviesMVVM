@@ -1,5 +1,5 @@
 // MovieTableViewCell.swift
-// Copyright © Roadmap. All rights reserved.
+// Copyright © Igor Obrizko. All rights reserved.
 
 import UIKit
 /// MovieTableViewCell

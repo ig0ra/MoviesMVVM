@@ -1,5 +1,5 @@
 // Constants.swift
-// Copyright © Roadmap. All rights reserved.
+// Copyright © Igor Obrizko. All rights reserved.
 
 import Foundation
 
